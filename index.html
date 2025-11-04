@@ -117,7 +117,7 @@
                         <div
                             class="step-number mx-auto mb-2 w-8 h-8 flex items-center justify-center rounded-full bg-red-600 text-white font-bold">
                             1</div>
-                        <h3 class="font-semibold">Chatbot de Servicios Generales</h3>
+                        <h3 class="font-semibold">Chatbot de Mantenimiento</h3>
                     </div>
                     <div class="step-line w-full absolute top-1/2 left-0 hidden md:block"></div>
                     <div id="step-4" data-step="4"
@@ -169,7 +169,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const stepsData = [
+            const stepsDataRaw = [
                 { id: 1, title: '1. Implementación del CAT', phase: 'Implementación del CAT', role: 'Agente', actions: ['Consultas operativas sin demora.', 'Solicitud de servicios generales sin intermediarios.', 'Acceso ágil a información técnica y documental.', 'Automatización de mails para acelerar procesos.'] },
                 { id: 2, title: '2. Solicitud de Presupuesto', phase: 'Fase 1: Inicio y Presupuesto', role: 'Agente', actions: ['Solicita un presupuesto formal y detallado del trabajo a realizar en caso de que no se haya podido solucionar por urgencia.'] },
                 { id: 3, title: '3. Adjuntar Presupuesto', phase: 'Fase 1: Inicio y Presupuesto', role: 'Agente', actions: ['Recibe el presupuesto del proveedor.', 'Sube y adjunta el documento al ticket para registrar el costo.', '<strong class="text-red-600">IMPORTANTE:</strong> Adjuntar siempre como comentario interno para evitar que la tienda vea los costos.'] },
@@ -211,6 +211,8 @@
                 },
                 { id: 7, title: '7. Cierre del Ticket', phase: 'Fase 3: Ejecución y Cierre', role: 'Proveedor ➔ Agente', actions: ['El Proveedor finaliza el trabajo en la ubicación.', 'Adjunta el remito o informe final de conformidad al ticket.', 'El Agente verifica la documentación, confirma la solución y procede al cierre formal del ticket.'] }
             ];
+
+            const stepsData = stepsDataRaw.filter(s => [1, 4, 6].includes(s.id));
 
             const stepElements = document.querySelectorAll('.step');
             const detailPhase = document.getElementById('detail-phase');
@@ -264,41 +266,19 @@
                     }
                 });
             }
-            // Contenedor (si lo manejás desde JS, dale layout para centrar y envolver):
-            subStepContainer.className = 'flex flex-wrap items-center gap-2 justify-center md:justify-start';
 
-            // Sub-steps como "chips" sin número, con texto centrado
             stepsData.forEach(step => {
-                const subStep = document.createElement('button');
-                subStep.type = 'button';
+                const subStep = document.createElement('div');
                 subStep.dataset.step = step.id;
-
-                // Toma un label del objeto si existe; sino usa un fallback legible
-                const label = step.label || step.title || step.text || `Paso ${step.id}`;
-                subStep.textContent = label;
-
-                // Estilos: chip con texto centrado
-                subStep.className = [
-                    'step-sub',
-                    'inline-flex items-center justify-center',
-                    'px-4 h-10 rounded-full',
-                    'border border-gray-200 bg-gray-100 text-gray-700',
-                    'hover:bg-red-50 hover:text-red-700 hover:border-red-200',
-                    'whitespace-nowrap text-center',
-                    'cursor-pointer transition'
-                ].join(' ');
-
-                // Click: ejecuta tu flujo (mantengo updateDetails y paso params si existen)
-                subStep.addEventListener('click', () => {
-                    if (typeof updateDetails === 'function') {
-                        updateDetails(step.id, step.params || null);
-                    } else if (typeof runStep === 'function') {
-                        runStep(step); // por si tenés otra función
-                    }
+                subStep.textContent = step.id;
+                subStep.className = 'step-sub w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 hover:bg-red-200 cursor-pointer transition';
+                subStep.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.dataset.step, 10);
+                    updateDetails(id);
                 });
-
                 subStepContainer.appendChild(subStep);
             });
+
             stepElements.forEach(step => {
                 step.addEventListener('click', (e) => {
                     const id = parseInt(e.currentTarget.dataset.step, 10);
