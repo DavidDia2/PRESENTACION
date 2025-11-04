@@ -264,19 +264,41 @@
                     }
                 });
             }
+            // Contenedor (si lo manejás desde JS, dale layout para centrar y envolver):
+            subStepContainer.className = 'flex flex-wrap items-center gap-2 justify-center md:justify-start';
 
+            // Sub-steps como "chips" sin número, con texto centrado
             stepsData.forEach(step => {
-                const subStep = document.createElement('div');
+                const subStep = document.createElement('button');
+                subStep.type = 'button';
                 subStep.dataset.step = step.id;
-                subStep.textContent = step.id;
-                subStep.className = 'step-sub w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 hover:bg-red-200 cursor-pointer transition';
-                subStep.addEventListener('click', (e) => {
-                    const id = parseInt(e.target.dataset.step, 10);
-                    updateDetails(id);
+
+                // Toma un label del objeto si existe; sino usa un fallback legible
+                const label = step.label || step.title || step.text || `Paso ${step.id}`;
+                subStep.textContent = label;
+
+                // Estilos: chip con texto centrado
+                subStep.className = [
+                    'step-sub',
+                    'inline-flex items-center justify-center',
+                    'px-4 h-10 rounded-full',
+                    'border border-gray-200 bg-gray-100 text-gray-700',
+                    'hover:bg-red-50 hover:text-red-700 hover:border-red-200',
+                    'whitespace-nowrap text-center',
+                    'cursor-pointer transition'
+                ].join(' ');
+
+                // Click: ejecuta tu flujo (mantengo updateDetails y paso params si existen)
+                subStep.addEventListener('click', () => {
+                    if (typeof updateDetails === 'function') {
+                        updateDetails(step.id, step.params || null);
+                    } else if (typeof runStep === 'function') {
+                        runStep(step); // por si tenés otra función
+                    }
                 });
+
                 subStepContainer.appendChild(subStep);
             });
-
             stepElements.forEach(step => {
                 step.addEventListener('click', (e) => {
                     const id = parseInt(e.currentTarget.dataset.step, 10);
