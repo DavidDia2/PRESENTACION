@@ -302,10 +302,10 @@
                 });
             }
 
-            stepsData.forEach(step => {
+            stepsData.forEach((step, idx) => {
                 const subStep = document.createElement('div');
                 subStep.dataset.step = step.id;
-                subStep.textContent = step.id;
+                subStep.textContent = (idx + 1);
                 subStep.className = 'step-sub w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 hover:bg-red-200 cursor-pointer transition';
                 subStep.addEventListener('click', (e) => {
                     const id = parseInt(e.target.dataset.step, 10);
