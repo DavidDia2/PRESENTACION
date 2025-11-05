@@ -57,12 +57,16 @@
             color: white;
             font-weight: 600;
         }
-    
-/* === Davo patch: ocultar números de pasos y ajustar títulos === */
-.step-number{ display:none !important; }
-.step h3{ margin-top:0; }
 
-</style>
+        /* === Davo patch: ocultar números de pasos y ajustar títulos === */
+        .step-number {
+            display: none !important;
+        }
+
+        .step h3 {
+            margin-top: 0;
+        }
+    </style>
 </head>
 
 <body class="antialiased text-gray-800">
@@ -119,17 +123,17 @@
                     <!-- Steps -->
                     <div id="step-1" data-step="1"
                         class="step w-full md:w-1/4 p-4 rounded-lg bg-white shadow-md border border-gray-200 text-center mb-4 md:mb-0 z-10">
-<h3 class="font-semibold">Chatbot de Mantenimiento</h3>
+                        <h3 class="font-semibold">Chatbot de Mantenimiento</h3>
                     </div>
                     <div class="step-line w-full absolute top-1/2 left-0 hidden md:block"></div>
                     <div id="step-4" data-step="4"
                         class="step w-full md:w-1/4 p-4 rounded-lg bg-white shadow-md border border-gray-200 text-center mb-4 md:mb-0 z-10 mx-0 md:mx-4">
-<h3 class="font-semibold">Info Nacional</h3>
+                        <h3 class="font-semibold">Info Nacional</h3>
                     </div>
                     <div class="step-line w-full absolute top-1/2 left-0 hidden md:block"></div>
                     <div id="step-6" data-step="6"
                         class="step w-full md:w-1/4 p-4 rounded-lg bg-white shadow-md border border-gray-200 text-center z-10">
-<h3 class="font-semibold">Gestock</h3>
+                        <h3 class="font-semibold">Gestock</h3>
                     </div>
                     <div class="step-line w-full absolute top-1/2 left-0 hidden md:block"></div>
                     <div id="step-8" data-step="8"
@@ -172,7 +176,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const stepsDataRaw = [
-                { id: 1, title: '1. Implementación del CAT', phase: 'Implementación del CAT', role: 'Agente', actions: ['Consultas operativas sin demora.', 'Solicitud de servicios generales sin intermediarios.', 'Acceso ágil a información técnica y documental.', 'Automatización de mails para acelerar procesos.'] },
+                { id: 1, phase: 'Implementación del CAT', role: 'Agente', actions: ['Consultas operativas sin demora.', 'Solicitud de servicios generales sin intermediarios.', 'Acceso ágil a información técnica y documental.', 'Automatización de mails para acelerar procesos.'] },
                 { id: 2, title: '2. Solicitud de Presupuesto', phase: 'Fase 1: Inicio y Presupuesto', role: 'Agente', actions: ['Solicita un presupuesto formal y detallado del trabajo a realizar en caso de que no se haya podido solucionar por urgencia.'] },
                 { id: 3, title: '3. Adjuntar Presupuesto', phase: 'Fase 1: Inicio y Presupuesto', role: 'Agente', actions: ['Recibe el presupuesto del proveedor.', 'Sube y adjunta el documento al ticket para registrar el costo.', '<strong class="text-red-600">IMPORTANTE:</strong> Adjuntar siempre como comentario interno para evitar que la tienda vea los costos.'] },
                 {
@@ -216,8 +220,8 @@
 
             const stepsData = stepsDataRaw.filter(s => [1, 4, 6].includes(s.id));
             const _s6 = stepsDataRaw.find(s => s.id === 6);
-            if(_s6){ stepsData.push(Object.assign({}, _s6, { id: 8, title: "8. Coordinación Final (Gestock)"})); }
-const stepElements = document.querySelectorAll('.step');
+            if (_s6) { stepsData.push(Object.assign({}, _s6, { id: 8, title: "8. Coordinación Final (Gestock)" })); }
+            const stepElements = document.querySelectorAll('.step');
             const detailPhase = document.getElementById('detail-phase');
             const detailTitle = document.getElementById('detail-title');
             const detailRole = document.getElementById('detail-role');
