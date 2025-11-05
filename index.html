@@ -166,7 +166,7 @@
                     </div>
                     <div id="detail-link-block" class="mt-6">
                         <a id="detail-link-anchor" href="#" target="_blank" rel="noopener"
-                           class="inline-flex w-full items-center justify-center px-6 py-4 rounded-xl border-2 border-gray-300 text-gray-800 hover:border-red-600 hover:shadow-md transition">
+                            class="inline-flex w-full items-center justify-center px-6 py-4 rounded-xl border-2 border-gray-300 text-gray-800 hover:border-red-600 hover:shadow-md transition">
                             <span class="font-medium">Abrir enlace</span>
                         </a>
                     </div>
@@ -255,7 +255,7 @@
             };
             const detailLinkBlock = document.getElementById('detail-link-block');
             const detailLinkAnchor = document.getElementById('detail-link-anchor');
-            const stepLinkMap = { 4: 'https://example.com/info-nacional', 6: 'https://example.com/gestock' };
+            const stepLinkMap = { 4: 'https://daviddia2.github.io/INFO-VF', 6: 'https://example.com/gestock' };
             const stepLinkTextMap = { 4: 'Abrir Info Nacional', 6: 'Abrir Gestock' };
 
 
@@ -271,7 +271,7 @@
                     detailTitle.textContent = stepData.title;
                     detailRole.textContent = stepData.role;
                     const _aud = (stepAudienceMap[stepId] || (stepData.audience || '')).trim();
-                    if (_aud) {                        detailAudience.textContent = _aud;                        audienceRow && (audienceRow.style.display = '');                    } else {                        audienceRow && (audienceRow.style.display = 'none');                    }
+                    if (_aud) { detailAudience.textContent = _aud; audienceRow && (audienceRow.style.display = ''); } else { audienceRow && (audienceRow.style.display = 'none'); }
                     const _link = stepLinkMap[stepId];
                     if (_link) {
                         detailLinkAnchor.href = _link;
@@ -280,7 +280,7 @@
                     } else {
                         detailLinkBlock && detailLinkBlock.classList.add('hidden');
                     }
-detailActions.innerHTML = '';
+                    detailActions.innerHTML = '';
                     stepData.actions.forEach(action => {
                         const li = document.createElement('li');
                         li.innerHTML = action;
