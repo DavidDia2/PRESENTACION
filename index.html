@@ -240,13 +240,30 @@
                         'Mejora en eficiencia operativa y control técnico.'
                     ]
                 },
+                {
+                    id: 8,
+                    title: '8. Coordinación Final (Gestock)',
+                    phase: 'Fase 3: Ejecución y Cierre',
+                    role: 'Jonathan Ferro ➔ Creador del aplicativo GESTOK',
+                    actions: [
+                        '¿Qué gestiona?',
+                        'Visualización de activos con localización  y estado operativo',
+                        'Control del pañol de Servicios Generales',
+                        'Registro de entregas en consignación',
+                        'Trazabilidad de trabajos técnicos en tiendas',
+                        'Activos en puesta de valor',
+                        '¿En qué impacta esto?:',
+                        '<strong class="text-green-600 mt-2 block">Optimización del stock y recursos:</strong> Permite una gestión eficiente del stock de insumos y activos, reduciendo costos y mejorando la disponibilidad de recursos.',
+                        'Mejora en la planificación y ejecución de mantenimientos.',
+                        '100% trazabilidad de activos.',
+                        'Mejora en eficiencia operativa y control técnico.'
+                    ]
+                },
                 { id: 7, title: '7. Cierre del Ticket', phase: 'Fase 3: Ejecución y Cierre', role: 'Proveedor ➔ Agente', actions: ['El Proveedor finaliza el trabajo en la ubicación.', 'Adjunta el remito o informe final de conformidad al ticket.', 'El Agente verifica la documentación, confirma la solución y procede al cierre formal del ticket.'] }
             ];
 
-            const stepsData = stepsDataRaw.filter(s => [1, 4, 6].includes(s.id));
-            const _s6 = stepsDataRaw.find(s => s.id === 6);
-            if (_s6) { stepsData.push(Object.assign({}, _s6, { id: 8, title: "8. Coordinación Final (Gestock)" })); }
-            const stepElements = document.querySelectorAll('.step');
+            const stepsData = stepsDataRaw.filter(s => [1, 4, 6, 8].includes(s.id));
+const stepElements = document.querySelectorAll('.step');
             const detailPhase = document.getElementById('detail-phase');
             const detailTitle = document.getElementById('detail-title');
             const detailRole = document.getElementById('detail-role');
