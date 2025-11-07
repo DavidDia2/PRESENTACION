@@ -66,7 +66,21 @@
         .step h3 {
             margin-top: 0;
         }
-    </style>
+    
+        /* Davo: preguntas sin viñeta + separador sutil (subtítulo) */
+        .dv-question-subtitle{
+            list-style-type: none !important;
+            margin-top: 0.75rem;     /* mt-3 */
+            padding-top: 0.5rem;     /* pt-2 */
+            border-top: 1px solid rgba(0,0,0,0.08); /* separador sutil */
+            font-weight: 600;        /* semi-bold */
+            color: #111827;          /* gray-900 */
+        }
+        @media (prefers-color-scheme: dark){
+            .dv-question-subtitle{ border-color: rgba(255,255,255,0.18); }
+        }
+
+</style>
 </head>
 
 <body class="antialiased text-gray-800">
@@ -305,14 +319,21 @@
                     } else {
                         detailLinkBlock && detailLinkBlock.classList.add('hidden');
                     }
+                    
                     detailActions.innerHTML = '';
                     stepData.actions.forEach(action => {
                         const li = document.createElement('li');
                         li.innerHTML = action;
+
+                        // Quitar viñeta y agregar separador sutil si es pregunta (¿ ... ?)
+                        const text = (li.textContent || '').trim();
+                        if (/^¿.*\?$/.test(text)) {
+                            li.classList.add('dv-question-subtitle');
+                        }
+
                         detailActions.appendChild(li);
                     });
-
-                    detailCard.style.opacity = '1';
+detailCard.style.opacity = '1';
                     detailCard.style.transform = 'translateY(0)';
                 }, 200);
 
