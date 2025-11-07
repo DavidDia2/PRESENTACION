@@ -59,7 +59,9 @@
         }
 
         /* === Davo patch: ocultar números de pasos y ajustar títulos === */
-        .step-number {}
+        .step-number {
+            display: none !important;
+        }
 
         .step h3 {
             margin-top: 0;
@@ -87,26 +89,24 @@
         }
     </style>
 
-    <!-- === DAVOO: Design tokens + Dark Mode + Microinteracciones === -->
+    <!-- === DAVOO: Tokens mínimos de marca === -->
+    <style>
+        :root {
+            --brand-red: #C3181E;
+        }
+    </style>
+    <!-- === /DAVOO === -->
+
+
+    <!-- === DAVOO: Tokens de marca (PDF) === -->
     <style id="davoo-brand-tokens">
         :root {
-            /* Ajusta este rojo con el HEX corporativo exacto del manual si deseas */
-            --brand-red: #dc2626;
-            /* fallback al rojo actual del archivo */
+            --brand-red: #C3181E;
+            --brand-red-700: #881015;
             --brand-gray: #58595B;
-            --brand-black: #111827;
-            --surface: #ffffff;
             --text: #111827;
-            --muted: #374151;
-            /* gris 700 */
+            --surface: #ffffff;
             --border: #E5E7EB;
-        }
-
-        html.dark {
-            --surface: #111418;
-            --text: #E5E7EB;
-            --muted: #CBD5E1;
-            --border: #1F242A;
         }
 
         body {
@@ -114,25 +114,19 @@
             font-variant-numeric: tabular-nums;
         }
 
-        /* Forzar fondos de tarjetas y bordes inclusive si hay utilidades Tailwind */
-        .card,
-        .t-card,
-        .ui-card,
-        .panel,
-        .box,
-        .tile {
-            background: var(--surface) !important;
-            border-color: var(--border) !important;
+        .marker-brand ::marker {
+            color: var(--brand-red);
         }
 
-        /* Línea central del timeline activa */
-        .timeline-progress {
-            background: linear-gradient(90deg, var(--brand-red), rgba(255, 0, 0, .65));
-            height: 4px;
-            border-radius: 9999px;
+        .btn-primary {
+            background: var(--brand-red) !important;
+            color: #fff !important;
         }
 
-        /* Steps */
+        .btn-primary:hover {
+            filter: brightness(.95);
+        }
+
         .step.active {
             background: var(--brand-red);
             color: #fff;
@@ -142,40 +136,6 @@
             background: #fff;
             color: var(--brand-red);
         }
-
-        .step:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, .08);
-            transition: all .2s ease;
-        }
-
-        .step:focus-visible {
-            outline: 2px solid var(--brand-red);
-            outline-offset: 2px;
-            border-radius: 12px;
-        }
-
-        /* Si algún CSS ocultaba los números, lo neutralizamos */
-        .step-number {
-            display: inline-flex !important;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* List markers al color de marca */
-        .marker-brand ::marker {
-            color: var(--brand-red);
-        }
-
-        /* Botones */
-        .btn-primary {
-            background: var(--brand-red) !important;
-            color: #fff !important;
-        }
-
-        .btn-primary:hover {
-            filter: brightness(.95);
-        }
     </style>
     <!-- === /DAVOO === -->
 
@@ -184,13 +144,13 @@
 <body class="antialiased text-gray-800">
 
     <!-- === DAVOO: Logo badge DIA (inline SVG) === -->
-    <div class="mx-6 my-4" style="display:inline-block; filter: drop-shadow(0 14px 28px rgba(220,38,38,.35));">
+    <div class="mx-6 my-4" style="display:inline-block; filter: drop-shadow(0 14px 28px rgba(195,24,30,.35));">
         <svg width="160" height="64" viewBox="0 0 160 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
             aria-label="DIA">
             <defs>
                 <linearGradient id="g" x1="0" y1="0" x2="160" y2="0" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#dc2626" />
-                    <stop offset="100%" stop-color="#991b1b" />
+                    <stop offset="0%" stop-color="#C3181E" />
+                    <stop offset="100%" stop-color="#881015" />
                 </linearGradient>
             </defs>
             <rect x="0" y="0" width="160" height="64" rx="16" fill="url(#g)" />
@@ -204,14 +164,11 @@
     <!-- === /DAVOO === -->
 
 
-
-
-
     <div class="container mx-auto p-4 sm:p-6 md:p-12">
         <header class="text-center mb-12">
             <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Gestión 360° - SSGG</h1>
-            <p class="text-gray-800 max-w-2xl mx-auto">Transformamos la gestión operativa y documental en una
-                experiencia digital, trazable y conectada a todo el sector.</p>
+            <p class="text-gray-800 max-w-2xl mx-auto">Gestión 360° integra todo: activos, técnicos, indicadores y
+                documentación en plataformas digitales, trazables y transversales.</p>
         </header>
 
         <main>
@@ -242,8 +199,8 @@
                         </ul>
                         <div class="mt-4 text-center md:text-left">
                             <span class="font-bold text-[var(--brand-gray)]">
-                                Gestión 360° integra todo: activos, técnicos, indicadores y documentación en plataformas
-                                digitales, trazables y transversales.
+                                Gestión 360° integra todo: activos, técnicos, indicadores y documentación en una sola
+                                plataforma digital, trazable y transversal.
                             </span>
                         </div>
 
@@ -274,7 +231,7 @@
                     <div class="step-line w-full absolute top-1/2 left-0 hidden md:block"></div>
                     <div id="step-8" data-step="8"
                         class="step w-full md:w-1/4 p-4 rounded-lg bg-white shadow-md border border-gray-200 text-center z-10 md:ml-4">
-                        <h3 class="font-semibold">Técnicos INTERNOS</h3>
+                        <h3 class="font-semibold">TECNICOS INTERNOS</h3>
                     </div>
 
                 </div>
@@ -314,8 +271,7 @@
                     </ul>
                 </div>
             </div>
-            <p class="text-center text-xs text-gray-400 mt-4">Haz clic en una tarjeta o en los puntos para ver los
-                detalles de ese paso.
+            <p class="text-center text-xs text-gray-400 mt-4">Haz clic en un número para ver los detalles de ese paso.
             </p>
         </main>
     </div>
@@ -337,9 +293,9 @@
                         'Reportes de las actas.',
                         'Reportes del control de plagas.',
                         'Reportes del control de (GE).',
-                        'Reportes del cronograma de técnicos.',
+                        'Reportes del cronograma de tecnicos.',
                         'Reportes de los planes Frío y Civil.',
-                        'Reportes del NPS del contact Center y técnicos internos.',
+                        'Reportes del NPS del contact Center y tecnicos internos.',
                         'Reportes del aplicativo GESTOK.',
                         '¿En qué impacta esto?',
                         '<strong class="text-green-600">Visibilidad total por tienda:</strong> Permite al equipo de Mantenimiento y Operaciones tener una visión completa y actualizada del estado de cada tienda, facilitando la toma de decisiones informadas.',
@@ -381,7 +337,7 @@
                 },
                 {
                     id: 8,
-                    title: 'Técnicos INTERNOS - GESTION 360° SSGG',
+                    title: 'TECNICOS INTERNOS - GESTION 360° SSGG',
                     phase: 'Fase 4: Ejecución y Cierre',
                     role: 'Patricio Varela  ➔ Lider',
                     actions: [
@@ -391,12 +347,12 @@
                         'Asistencia a Tiendas: 5 Camionetas + 5 técnicos',
                         'Control de plagas: 1 Camioneta + 1 técnico',
                         'Entrega de balanzas: 1 Camioneta + 2 técnicos ',
-                        'Reactivaciones: 1 Camioneta + 1 técnicos',
+                        'Reactivaciónes: 1 Camioneta + 1 técnicos',
                         '<strong>Limpieza: 1 Camioneta + 2 técnicos<strong>',
                         '¿Como se ejecuta la operativa en PBA y INT?',
                         'Asistencia a Tiendas: 6 Camionetas + 6 técnicos',
-                        '<strong>Corredor turístico MDQ 10-11.<strong>',
-                        '<strong>Corredor turístico Entre Ríos 1-12.<strong>',
+                        '<strong>Corredor turístico MDQ 10-11<strong>',
+                        '<strong>Corredor turístico Entre rios 1-12<strong>',
 
                     ]
                 },
@@ -415,7 +371,7 @@
             const detailAudience = document.getElementById('detail-audience');
             const stepAudienceMap = {
                 1: 'Tiendas · Contact Center · Gerentes de Ventas',
-                4: 'Contact Center · Técnicos · Gerentes de Ventas · Auditores internos · Equipo de Mantenimiento',
+                4: 'Contact Center · Tecnicos · Gerentes de Ventas · Auditores internos · Equipo de Mantenimiento',
                 6: 'Equipo de Mantenimiento ',
                 8: 'Gabriel Velazo · Coordinador'
             };
@@ -436,10 +392,9 @@
             const stepLinkTextMap = { 4: 'Abrir Info Nacional', 6: 'Abrir Gestock' };
 
             // Davo: enlaces para "Ver fotos" (dejar vacío para ocultar)
-            const stepPhotosMap = {
-                4: '', // Info Nacional -> enlace a fotos
-                6: 'https://daviddia2.github.io/INFO-VF'  // Gestock -> enlace a fotos
-            };
+            const stepPhotosMap = { 4: '', 6: '' };
+            const apvLinkMap = { 6: 'https://daviddia2.github.io/INFO-VF' };
+            const cleanLinkMap = { 4: '#' };
 
 
 
@@ -467,15 +422,9 @@
 
 
 
-                    // Davo: manejar botón "Ver fotos"
-                    const _photos = (stepPhotosMap[stepId] || '').trim();
-                    if (_photos) {
-                        detailPhotosAnchor.href = _photos;
-                        detailPhotosBlock.classList.remove('hidden');
-                    } else {
-                        detailPhotosBlock.classList.add('hidden');
-                    }
+                    // Davo: manejar botón "Ver fotos" (bloque desactivado; se usa enlace inline junto al bullet APV)
                     detailActions.innerHTML = '';
+
                     stepData.actions.forEach(action => {
                         const li = document.createElement('li');
                         li.innerHTML = action;
@@ -486,6 +435,29 @@
                             li.classList.add('dv-question-subtitle');
                         }
 
+                        // Si el item es "Activos en puesta de valor", agregamos el botón inline
+                        const plain = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+                        if (plain.includes('activos en puesta de valor')) {
+                            const a = document.createElement('a');
+                            a.href = (apvLinkMap[stepId] || '#');
+                            a.target = '_blank';
+                            a.rel = 'noopener';
+                            a.className = 'ml-3 inline-flex items-center px-3 py-1.5 rounded-lg border border-[var(--brand-red)] text-[var(--brand-red)] text-xs font-semibold hover:bg-[var(--brand-red)] hover:text-white transition';
+                            a.textContent = 'Activo ver fotos';
+                            li.appendChild(a);
+                        }
+
+
+                        // Si el item menciona "Limpieza: 1 Camioneta + 2 técnicos", agregamos botón inline
+                        if (plain.includes('limpieza') && (plain.includes('camioneta') || plain.includes('camioneta + 2 tecnicos'))) {
+                            const b = document.createElement('a');
+                            b.href = (cleanLinkMap[stepId] || '#');
+                            b.target = '_blank';
+                            b.rel = 'noopener';
+                            b.className = 'ml-3 inline-flex items-center px-3 py-1.5 rounded-lg border border-[var(--brand-red)] text-[var(--brand-red)] text-xs font-semibold hover:bg-[var(--brand-red)] hover:text-white transition';
+                            b.textContent = 'Limpieza ver fotos';
+                            li.appendChild(b);
+                        }
                         detailActions.appendChild(li);
                     });
                     detailCard.style.opacity = '1';
