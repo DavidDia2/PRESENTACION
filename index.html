@@ -66,21 +66,28 @@
         .step h3 {
             margin-top: 0;
         }
-    
+
         /* Davo: preguntas sin viñeta + separador sutil (subtítulo) */
-        .dv-question-subtitle{
+        .dv-question-subtitle {
             list-style-type: none !important;
-            margin-top: 0.75rem;     /* mt-3 */
-            padding-top: 0.5rem;     /* pt-2 */
-            border-top: 1px solid rgba(0,0,0,0.08); /* separador sutil */
-            font-weight: 600;        /* semi-bold */
-            color: #111827;          /* gray-900 */
-        }
-        @media (prefers-color-scheme: dark){
-            .dv-question-subtitle{ border-color: rgba(255,255,255,0.18); }
+            margin-top: 0.75rem;
+            /* mt-3 */
+            padding-top: 0.5rem;
+            /* pt-2 */
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            /* separador sutil */
+            font-weight: 600;
+            /* semi-bold */
+            color: #111827;
+            /* gray-900 */
         }
 
-</style>
+        @media (prefers-color-scheme: dark) {
+            .dv-question-subtitle {
+                border-color: rgba(255, 255, 255, 0.18);
+            }
+        }
+    </style>
 </head>
 
 <body class="antialiased text-gray-800">
@@ -269,7 +276,10 @@
                         'Entrega de balanzas: 1 Camioneta + 2 técnicos ',
                         'Reactivaciónes: 1 Camioneta + 1 técnicos',
                         'Limpieza: 1 Camioneta + 2 técnicos',
-                        'MDQ - 10/11  corredor turístico.',
+                        '¿Como se ejecuta la operativa en PBA y INT?',
+                        'Asistencia a Tiendas: 6 Camionetas + 6 técnicos',
+                        'Corredor turístico MDQ 10-11: 1 Camioneta + 1 técnico',
+                        'Corredor turístico Entre rios 1-12: 1 Camioneta + 1 técnico',
 
                     ]
                 },
@@ -319,7 +329,7 @@
                     } else {
                         detailLinkBlock && detailLinkBlock.classList.add('hidden');
                     }
-                    
+
                     detailActions.innerHTML = '';
                     stepData.actions.forEach(action => {
                         const li = document.createElement('li');
@@ -333,7 +343,7 @@
 
                         detailActions.appendChild(li);
                     });
-detailCard.style.opacity = '1';
+                    detailCard.style.opacity = '1';
                     detailCard.style.transform = 'translateY(0)';
                 }, 200);
 
