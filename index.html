@@ -279,7 +279,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const stepsDataRaw = [
-                { id: 1, title: 'Implementación del CAT', phase: 'Punto de Partida: Empezar a migrar al mundo digital', role: 'David Diaz ➔ Lider del proceso', actions: ['Consultas operativas sin demora.', 'Solicitud de servicios generales sin intermediarios.', 'Acceso ágil a información técnica y documental.', 'Automatización de mails para acelerar procesos.', 'Es el primer punto de contacto digital: conecta al usuario con el sistema, agiliza la gestión y deja registro trazable.'] },
+                { id: 1, title: 'Implementación del CAT', phase: 'Punto de Partida: Empezar a migrar al mundo digital', role: 'David Diaz ➔ Lider del proceso', actions: ['Consultas operativas sin demora.', 'Solicitud de servicios generales sin intermediarios.', 'Acceso ágil a información técnica y documental.', 'Automatización de mails para acelerar procesos.', 'Es el primer punto de contacto digital: conecta al usuario con el sistema, agiloza la gestión y deja registro trazable.'] },
                 { id: 2, title: '2. Solicitud de Presupuesto', phase: 'Fase 1: Inicio y Presupuesto', role: 'Agente', actions: ['Solicita un presupuesto formal y detallado del trabajo a realizar en caso de que no se haya podido solucionar por urgencia.'] },
                 { id: 3, title: '3. Adjuntar Presupuesto', phase: 'Fase 1: Inicio y Presupuesto', role: 'Agente', actions: ['Recibe el presupuesto del proveedor.', 'Sube y adjunta el documento al ticket para registrar el costo.', '<strong class="text-[var(--brand-red)]">IMPORTANTE:</strong> Adjuntar siempre como comentario interno para evitar que la tienda vea los costos.'] },
                 {
@@ -337,7 +337,7 @@
                 },
                 {
                     id: 8,
-                    title: 'TECNICOS INTERNOS - GESTION 360° SSGG',
+                    title: 'TECNICOS INTERNOS - GESTION 30° SSGG',
                     phase: 'Fase 4: Mantenimiento y Mejora Proactiva',
                     role: 'Patricio Varela  ➔ Lider',
                     actions: [
@@ -381,18 +381,37 @@
             // Davo: crear bloque "Ver fotos" debajo del CTA principal
             const detailPhotosBlock = document.createElement('div');
             detailPhotosBlock.id = 'detail-photos-block';
-            detailPhotosBlock.className = 'mt-2 hidden';
+            detailPhotosBlock.className = 'mt-2 hidden'; // Empezar oculto
             detailPhotosBlock.innerHTML = `<a id="detail-photos-anchor" href="#" target="_blank" rel="noopener"
-                class="inline-flex w-full items-center justify-center px-6 py-3 rounded-xl border-2 border-gray-200 text-gray-700 hover:border-[var(--brand-red)] hover:shadow-md transition">
-                <span class="font-medium">Ver fotos</span>
+                class="inline-flex w-full items-center justify-center px-6 py-4 rounded-xl border-2 border-gray-300 text-gray-800 hover:border-[var(--brand-red)] hover:shadow-md transition">
+                <span class="font-medium">Ver Flyer Lanzamiento</span>
               </a>`;
             detailLinkBlock.insertAdjacentElement('afterend', detailPhotosBlock);
             const detailPhotosAnchor = detailPhotosBlock.querySelector('#detail-photos-anchor');
-            const stepLinkMap = { 4: 'https://daviddia2.github.io/INFO-VF', 6: 'https://www.appsheet.com/Account/Login?appName=Gestock%20DIA&FullScope=False&provider=google&returnUrl=https%3A%2F%2Fwww.appsheet.com%2Fstart%2Fdb447f85-4531-4d25-bf60-52bc322a70ec%3Fplatform%3Ddesktop#appName=NewApp-925466678-25-08-28&vss=H4sIAAAAAAAAA6WQsQrCMBCGX0Vu7lAnIat0ENFBxcV0iMlVgjUpTWotIe_uxSq6quP9x_fdzwW4auy3XsgzsEN4T0scgEHgsBsa5MA4zK3xra05ZBzW4jKGhZlQ7vTJCA4RYpm9FB4dsPC1gf3dIQOt0HhdaWyTLsGkeaK0TiAFHxjEDC6dF8caH80TtrH9eD_PKzHDqSTSYY3So6JXlTESVFnZOVR7avxbU7cwxa0RRq2sorOVqB3GO6x3rXyVAQAA&row=00fa7e1c&view=En%20Consigna' };
-            const stepLinkTextMap = { 4: 'Abrir Info Nacional', 6: 'Abrir Gestock' };
 
-            // Davo: enlaces para "Ver fotos" (dejar vacío para ocultar)
-            const stepPhotosMap = { 4: '', 6: '' };
+            // === DAVO: AQUI ESTÁN TUS LINKS CORREGIDOS ===
+            // Asumiendo que tu usuario es "daviddia2" y el repo es "PRESENTACION"
+            const repoBaseUrl = 'https://daviddia2.github.io/PRESENTACION/';
+
+            const stepLinkMap = {
+                1: repoBaseUrl + 'flyer-whatsapp.jpg', // Botón 1 (renombrado)
+                4: 'https://daviddia2.github.io/INFO-VF',
+                6: 'https://www.appsheet.com/Account/Login?appName=Gestock%20DIA&FullScope=False&provider=google&returnUrl=https%3A%2F%2Fwww.appsheet.com%2Fstart%2Fdb447f85-4531-4d25-bf60-52bc322a70ec%3Fplatform%3Ddesktop#appName=NewApp-925466678-25-08-28&vss=H4sIAAAAAAAAA6WQsQrCMBCGX0Vu7lAnIat0ENFBxcV0iMlVgjUpTWotIe_uxSq6quP9x_fdzwW4auy3XsgzsEN4T0scgEHgsBsa5MA4zK3xra05ZBzW4jKGhZlQ7vTJCA4RYpm9FB4dsPC1gf3dIQOt0HhdaWyTLsGkeaK0TiAFHxjEDC6dF8caH80TtrH9eD_PKzHDqSTSYY3So6JXlTESVFnZOVR7avxbU7cwxa0RRq2sorOVqB3GO6x3rXyVAQAA&row=00fa7e1c&view=En%20Consigna'
+            };
+            const stepLinkTextMap = {
+                1: 'Ver Flyer WhatsApp',
+                4: 'Abrir Info Nacional',
+                6: 'Abrir Gestock'
+            };
+
+            // Enlaces para el SEGUNDO botón
+            const stepPhotosMap = {
+                1: repoBaseUrl + 'flyer-lanzamiento.jpg', // Botón 2 (renombrado)
+                4: '',
+                6: ''
+            };
+            // ===================================
+
             const apvLinkMap = { 6: 'https://docs.google.com/document/d/12pGrJrSt0oCF-S7XSuQgwIFLf8NIqZ0NGmY12Lq95fI/edit?usp=sharing' };
             const cleanLinkMap = { 8: 'https://docs.google.com/document/d/1pfZBMpgFLBdgPeDkfuNLTWn_WZZoHzW8ENOJeIO8BW0/edit?usp=sharing' };
 
@@ -411,6 +430,8 @@
                     detailRole.textContent = stepData.role;
                     const _aud = (stepAudienceMap[stepId] || (stepData.audience || '')).trim();
                     if (_aud) { detailAudience.textContent = _aud; audienceRow && (audienceRow.style.display = ''); } else { audienceRow && (audienceRow.style.display = 'none'); }
+
+                    // Botón 1 (Principal)
                     const _link = stepLinkMap[stepId];
                     if (_link) {
                         detailLinkAnchor.href = _link;
@@ -420,11 +441,19 @@
                         detailLinkBlock && detailLinkBlock.classList.add('hidden');
                     }
 
+                    // Botón 2 (Secundario)
+                    const _photosLink = (stepPhotosMap[stepId] || '').trim();
+                    if (_photosLink) {
+                        detailPhotosAnchor.href = _photosLink;
+                        detailPhotosBlock.classList.remove('hidden'); // Mostrarlo
+                    } else {
+                        detailPhotosBlock.classList.add('hidden'); // Ocultarlo
+                    }
 
-
-                    // Davo: manejar botón "Ver fotos" (bloque desactivado; se usa enlace inline junto al bullet APV)
+                    // Limpiar el panel derecho
                     detailActions.innerHTML = '';
 
+                    // Volver a dibujar los bullet points
                     stepData.actions.forEach(action => {
                         const li = document.createElement('li');
                         li.innerHTML = action;
