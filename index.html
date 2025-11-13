@@ -382,31 +382,34 @@
             const detailPhotosBlock = document.createElement('div');
             detailPhotosBlock.id = 'detail-photos-block';
             detailPhotosBlock.className = 'mt-2 hidden'; // Empezar oculto
+
+            // === DAVO: CAMBIO DE TEXTO BOTÓN 2 ===
             detailPhotosBlock.innerHTML = `<a id="detail-photos-anchor" href="#" target="_blank" rel="noopener"
                 class="inline-flex w-full items-center justify-center px-6 py-4 rounded-xl border-2 border-gray-300 text-gray-800 hover:border-[var(--brand-red)] hover:shadow-md transition">
-                <span class="font-medium">Ver Flyer Lanzamiento</span>
+                <span class="font-medium">Ver Flyer WhatsApp</span>
               </a>`;
+            // ===================================
+
             detailLinkBlock.insertAdjacentElement('afterend', detailPhotosBlock);
             const detailPhotosAnchor = detailPhotosBlock.querySelector('#detail-photos-anchor');
 
-            // === DAVO: AQUI ESTÁN TUS LINKS CORREGIDOS ===
-            // Asumiendo que tu usuario es "daviddia2" y el repo es "PRESENTACION"
+            // === DAVO: CAMBIO DE LINKS Y TEXTOS ===
             const repoBaseUrl = 'https://daviddia2.github.io/PRESENTACION/';
 
             const stepLinkMap = {
-                1: repoBaseUrl + 'flyer-whatsapp.jpg', // Botón 1 (renombrado)
+                1: repoBaseUrl + 'flyer-lanzamiento.jpg', // Botón 1 (ahora Lanzamiento)
                 4: 'https://daviddia2.github.io/INFO-VF',
                 6: 'https://www.appsheet.com/Account/Login?appName=Gestock%20DIA&FullScope=False&provider=google&returnUrl=https%3A%2F%2Fwww.appsheet.com%2Fstart%2Fdb447f85-4531-4d25-bf60-52bc322a70ec%3Fplatform%3Ddesktop#appName=NewApp-925466678-25-08-28&vss=H4sIAAAAAAAAA6WQsQrCMBCGX0Vu7lAnIat0ENFBxcV0iMlVgjUpTWotIe_uxSq6quP9x_fdzwW4auy3XsgzsEN4T0scgEHgsBsa5MA4zK3xra05ZBzW4jKGhZlQ7vTJCA4RYpm9FB4dsPC1gf3dIQOt0HhdaWyTLsGkeaK0TiAFHxjEDC6dF8caH80TtrH9eD_PKzHDqSTSYY3So6JXlTESVFnZOVR7avxbU7cwxa0RRq2sorOVqB3GO6x3rXyVAQAA&row=00fa7e1c&view=En%20Consigna'
             };
             const stepLinkTextMap = {
-                1: 'Ver Flyer WhatsApp',
+                1: 'Ver Flyer Lanzamiento', // Texto Botón 1
                 4: 'Abrir Info Nacional',
                 6: 'Abrir Gestock'
             };
 
             // Enlaces para el SEGUNDO botón
             const stepPhotosMap = {
-                1: repoBaseUrl + 'flyer-lanzamiento.jpg', // Botón 2 (renombrado)
+                1: repoBaseUrl + 'flyer-whatsapp.jpg', // Botón 2 (ahora WhatsApp)
                 4: '',
                 6: ''
             };
