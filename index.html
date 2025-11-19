@@ -376,7 +376,7 @@
             // ORDEN DE BOTONES CORREGIDO
             detailPhotosBlock.innerHTML = `<a id="detail-photos-anchor" href="#" target="_blank" rel="noopener"
                 class="inline-flex w-full items-center justify-center px-6 py-4 rounded-xl border-2 border-gray-300 text-gray-800 hover:border-[var(--brand-red)] hover:shadow-md transition">
-                <span class="font-medium">Ver Flyer WhatsApp</span>
+                <span id="detail-photos-text" class="font-medium">Ver recurso</span>
               </a>`;
 
             detailLinkBlock.insertAdjacentElement('afterend', detailPhotosBlock);
@@ -408,8 +408,13 @@
             const stepPhotosMap = {
                 1: repoBaseUrl + 'flyer-whatsapp.jpg', // Botón 2 (WhatsApp)
                 4: '',
-                6: ''
-                // (Step 8 no usa este slot, así que queda vacío y se oculta)
+                6: 'Remito.jpg',
+                8: ''
+            };
+
+            const stepPhotosTextMap = {
+                1: 'Ver Flyer WhatsApp',
+                6: 'Remito digital'
             };
 
             // LINKS INLINE (tal como estaban en tu archivo)
@@ -444,10 +449,14 @@
                     }
 
                     // Botón 2 (Secundario)
-                    // Esta lógica ahora funciona solo para el Step 1
+                    // Esta lógica ahora funciona para Step 1 y para Gestock (Step 6)
                     const _photosLink = (stepPhotosMap[stepId] || '').trim();
                     if (_photosLink) {
                         detailPhotosAnchor.href = _photosLink;
+                        const photosTextSpan = document.getElementById('detail-photos-text');
+                        if (photosTextSpan) {
+                            photosTextSpan.textContent = stepPhotosTextMap[stepId] || 'Ver recurso';
+                        }
                         detailPhotosBlock.classList.remove('hidden'); // Mostrarlo
                     } else {
                         detailPhotosBlock.classList.add('hidden'); // Ocultarlo
